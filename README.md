@@ -144,7 +144,7 @@ python main.py
 
 The first 50 products are free. After that, you can upgrade to the Pro Plan to scrape 1,000 products for $9.
 
-### ❓ How to get list of all g2 products?
+### ❓ How to get list of g2 products?
 
 Kindly run following command:
 ```sh
