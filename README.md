@@ -144,9 +144,12 @@ python main.py
 
 The first 50 products are free. After that, you can upgrade to the Pro Plan to scrape 1,000 products for $9.
 
-### ❓ How many products are listed on G2?
+### ❓ How to get list of all g2 products?
 
-Over 160K+ products are listed on G2. We keep an up-to-date list of G2 products, which is updated on a daily basis. Find the list [here](https://github.com/omkarcloud/g2-scraper/blob/master/g2-products/g2-products.json).
+Kindly run following command:
+```sh
+python products.py
+```
 
 ### ❓ How Are You Different from Your Competitors?
 

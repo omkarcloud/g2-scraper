@@ -1,4 +1,3 @@
-
 # Security Policy for the G2 Scraper Project
 
 ## Disclaimer
