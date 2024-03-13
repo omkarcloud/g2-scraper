@@ -44,7 +44,7 @@ We take concerns related to the G2 Scraper Project very seriously. If you have a
 
 - ✅ [Botasaurus](https://github.com/omkarcloud/botasaurus): The All-in-One Web Scraping Framework with Anti-Detection, Parallelization, Asynchronous, and Caching Superpowers.
 
-- ✅ [Google Maps Scraper](https://github.com/omkarcloud/google-maps-scraper): Discover Search Results from Google Maps.
+<!-- - ✅ [Google Maps Scraper](https://github.com/omkarcloud/google-maps-scraper): Discover Search Results from Google Maps. -->
 
 ---
 
