@@ -31,11 +31,10 @@ db.sqlite3
 # mypy
 .mypy_cache/
 
-tasks/
+/tasks/
 
-profiles/
+/profiles/
 
-output/
-error_logs/
+/error_logs/
 
 create_cache.py
