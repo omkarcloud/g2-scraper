@@ -75,4 +75,4 @@ Server.add_scraper(
     ],
 )
 
-Server.set_rate_limit(task=5)
+Server.set_rate_limit(task=2, request=2, browser=2)

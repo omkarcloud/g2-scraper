@@ -38,3 +38,5 @@ db.sqlite3
 /error_logs/
 
 create_cache.py
+cache/.DS_Store
+.DS_Store
