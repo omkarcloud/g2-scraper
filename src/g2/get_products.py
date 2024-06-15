@@ -11,7 +11,7 @@ FAILED_DUE_TO_NO_KEY = "FAILED_DUE_TO_NO_KEY"
 FAILED_DUE_TO_UNKNOWN_ERROR = "FAILED_DUE_TO_UNKNOWN_ERROR"
 
 def do_request(data, endpoint, retry_count=3):
-    
+    print(data)
     params = data["params"]
     key = data["key"]
 
@@ -68,7 +68,7 @@ def do_request(data, endpoint, retry_count=3):
                     })
 
 
-@task(**default_request_options,)
+@task(**default_request_options, parallel=5)
 def get_products(data, metadata):
     if not metadata.get('key'):
          return  DontCache({
@@ -84,7 +84,7 @@ def get_products(data, metadata):
     return do_request(data,"g2-products")
 
 
-@task(**default_request_options,)
+@task(**default_request_options, parallel=5)
 def get_products_by_category(data, metadata):
     if not metadata.get('key'):
          return  DontCache({

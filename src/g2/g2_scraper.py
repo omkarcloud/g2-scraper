@@ -68,22 +68,18 @@ class G2:
             products = [products]  
 
         products = [extract_product_from_link(product) for product in products]
+        
+        metadata = {"key": key}
+        xs = [{"product": product, "max_reviews": max_reviews} for product in products]
+        result_item = get_products(xs, cache=cache, metadata=metadata)
+        _, credits_exhausted, not_subscribed, unknown_error, no_key = clean_data(result_item)
+        print_data_errors(credits_exhausted, not_subscribed, unknown_error, no_key)
         result = []
-        for product in products:
-            data = {"product": product, "max_reviews": max_reviews}
-            metadata = {"key": key}
-            
-            result_item = get_products(data, cache=cache, metadata=metadata)
-            
-            success, credits_exhausted, not_subscribed, unknown_error, no_key = clean_data([result_item])
-            print_data_errors(credits_exhausted, not_subscribed, unknown_error, no_key)
-
-            if success:
-                result_item = result_item['data']
+        for x in result_item:            
+            if x.get("error"):
+                result.append({"product_id" : x['error']})
             else:
-                result_item = {"product_id" : result_item['error']}
-            
-            result.append(result_item)
+                result.append( x['data'])
 
         return result
 
