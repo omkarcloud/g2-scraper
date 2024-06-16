@@ -11,7 +11,6 @@ FAILED_DUE_TO_NO_KEY = "FAILED_DUE_TO_NO_KEY"
 FAILED_DUE_TO_UNKNOWN_ERROR = "FAILED_DUE_TO_UNKNOWN_ERROR"
 
 def do_request(data, endpoint, retry_count=3):
-    print(data)
     params = data["params"]
     key = data["key"]
 
