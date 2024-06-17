@@ -63,6 +63,7 @@ function getInput(controls) {
         ]})
         .numberGreaterThanOrEqualToZero('max_reviews',
             {
+                isShown: (x)=>false,
                 placeholder: 25,
                 max: 2500,
             }
