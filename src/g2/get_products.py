@@ -37,7 +37,8 @@ def do_request(data, endpoint, retry_count=3):
                             "data":  None,
                             "error":FAILED_DUE_TO_UNKNOWN_ERROR
                         })
-
+        if response.status_code == 404:
+            return DontCache({"data": None, "error": response_data.get("message", "")})
         
         return {
             "data": convert_unicode_dict_to_ascii_dict(response_data),

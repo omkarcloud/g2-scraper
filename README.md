@@ -82,7 +82,8 @@ cd g2-scraper
 
 2️⃣ Install Dependencies 📦:
 ```shell
-python -m pip install -r requirements.txt && python run.py install
+python -m pip install -r requirements.txt
+python run.py install
 ```
 
 3️⃣ Launch the UI Dashboard 🚀:
@@ -146,7 +147,7 @@ Kindly follow these steps to use our Rapid API and easily get the g2 product det
 
 ![Sign Up on RapidAPI](https://raw.githubusercontent.com/omkarcloud/assets/master/images/sign-up.png)
 
-2. Subscribe to the Free Plan by visiting [this link](https://rapidapi.com/Chetan11dev/api/website-social-scraper-api/pricing).
+2. Subscribe to the Free Plan by visiting [this link](https://rapidapi.com/Chetan11dev/api/g2-data-api/pricing).
 
 ![Subscribe to Free Plan](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/g2-free-subscription.png)
 
