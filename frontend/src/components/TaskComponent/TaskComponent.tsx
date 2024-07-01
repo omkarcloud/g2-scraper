@@ -291,7 +291,7 @@ const TaskComponent = ({
           />
         </div> :  <div className=' pt-4'/>}
       </OutputTabsContainer>
-      <OutputContainerWithBottomPadding>
+      <OutputContainerWithBottomPadding className={ hasResults && response.results.length <= 5 ? "OutputContainerWithBottomPadding" :null}>
         {loading ? (
           <CenteredSpinner></CenteredSpinner>
         ) : hasResults ? (

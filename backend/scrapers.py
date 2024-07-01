@@ -21,7 +21,7 @@ def split_task(data):
     products = []
     max_reviews = data["max_reviews"]
     if max_reviews is None:
-        max_reviews = 25
+        max_reviews = 2500
 
     for query in data["search_queries"]:
         if "categories" in query:
@@ -76,3 +76,14 @@ Server.add_scraper(
 )
 
 Server.set_rate_limit(task=2, request=2, browser=2)
+
+
+Server.configure(
+    title="G2 Scraper",
+    header_title="Made with Botasaurus",
+    description="G2 Scraper helps you collect G2 product data, including names, product descriptions, reviews, ratings, comparisons, alternatives, and more.",
+    right_header={
+        "text": "Love It? Star It! ★",
+        "link": "https://github.com/omkarcloud/g2-scraper/",
+    },
+)

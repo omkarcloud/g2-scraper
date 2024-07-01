@@ -107,6 +107,8 @@ class G2:
             result_item = result_item['data']
         else:
             result_item = {"product_id" : result_item['error']}
+        
+        
         return result_item
 
 # category=lead-intelligencea

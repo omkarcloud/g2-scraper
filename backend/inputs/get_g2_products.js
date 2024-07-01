@@ -65,9 +65,8 @@ function getInput(controls) {
         })
         .numberGreaterThanOrEqualToZero('max_reviews',
             {
-                isShown: (x) => false,
                 placeholder: 25,
-                max: 25,
+                max: 2500,
             }
         ).text('api_key', {
             placeholder: "2e5d346ap4db8mce4fj7fc112s9h26s61e1192b6a526af51n9",
