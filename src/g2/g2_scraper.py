@@ -105,7 +105,7 @@ class G2:
         print_data_errors(credits_exhausted, not_subscribed, unknown_error, no_key)
         if success:
             result_item = result_item['data']
-            return G2.get_products([x['link'] for x in result_item['results']], data["max_reviews"], data["api_key"])
+            return G2.get_products([x['link'] for x in result_item['results']], max_reviews, key)
         else:
             result_item = {"product_id" : result_item['error']}
         
