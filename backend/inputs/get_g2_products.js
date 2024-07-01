@@ -75,12 +75,14 @@ function getInput(controls) {
             validate: (x, data) => {
                 if (isEmpty(x)) {
                     const ls = data['search_queries'].filter(isNotEmpty)
-
+                    
                     if (ls.length && !ls.every(query => validUrls.includes(query.trim()))) {
-                        return 'To get different products, please enter your Rapid API Key. You can use the starter plan, which offers a generous 400 monthly searches.'
+                        return 'To get different products, please enter your Rapid API Key. You can use the starter plan, which offers 200 free monthly searches.'
+                    }
+                    if (data['max_reviews'] !== null){
+                        return 'To get different number of reviews, please enter your Rapid API Key. You can use the starter plan, which offers 200 free monthly searches.'
                     }
                 }
-
             }
         })
 }
