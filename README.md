@@ -158,7 +158,7 @@ Kindly follow these steps to use our Rapid API and easily get the g2 product det
 
 ![api-key](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/api-key.png)
 
-The first 200 products are free to scrape with the API. After that, you can upgrade to the Pro Plan to scrape 4,000 products for $16, and access 101% accurate, fresh, and comprehensive data points with 45+ fields.
+The first 50 products are free to scrape with the API. After that, you can upgrade to the Pro Plan to scrape 4,000 products for $16, and access 101% accurate, fresh, and comprehensive data points with 45+ fields.
 
 ### ❓ Do You Offer Discounts for Complete or Partial Datasets?
 
