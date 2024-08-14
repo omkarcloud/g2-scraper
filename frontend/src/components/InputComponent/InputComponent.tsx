@@ -7,14 +7,14 @@ import {
 } from '@elastic/eui'
 
 import { EuiForm } from '@elastic/eui'
-
+import Toast from '../../utils/cogo-toast'
 import { Control, WithChooseOptions, createControls } from 'botasaurus-controls'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import Api from '../../utils/api'
 import { isEmptyObject } from '../../utils/missc'
 import { pushToRoute } from '../../utils/next'
-import { EmptyInputs, EmptyScraper } from '../Empty/Empty'
+import { EmptyFailedInputJs, EmptyInputs, EmptyScraper } from '../Empty/Empty'
 import ScraperSelector from '../ScraperSelector/ScraperSelector'
 import CheckboxField from '../inputs/CheckBoxField'
 import ChooseField from '../inputs/ChooseField'
@@ -26,6 +26,8 @@ import SwitchField from '../inputs/SwitchField'
 import TextAreaField from '../inputs/TextAreaField'
 import TextField from '../inputs/TextField'
 import ClientOnly from '../ClientOnly'
+import { Container } from '../Wrappers'
+import InputMultiSelect from '../inputs/InputMultiSelect'
 
 function mapControlsToElements(
   controls: Control<any, WithChooseOptions>[],
@@ -41,10 +43,10 @@ function mapControlsToElements(
       })
 
       if (!nestedElements.every(x => x === null)) {
-          mappedControls.push(
+        mappedControls.push(
           <CollapsibleSection onToggle={(isOpen) => {
-            const newState = isOpen ? 'open' : 'closed';
-            onToggle( control.id, newState);
+            const newState = isOpen ? 'open' : 'closed'
+            onToggle(control.id, newState)
           }} forceState={accords[control.id]} key={control.id} title={control.label}>
             {nestedElements}
           </CollapsibleSection>
@@ -80,8 +82,8 @@ const InputFields = ({
   onDataChange,
   onSubmit,
   onReset,
-  submitAttempted, 
-  accords, 
+  submitAttempted,
+  accords,
   onToggle
 }) => {
   const handleInputChange = (id, value) => {
@@ -91,14 +93,15 @@ const InputFields = ({
   return (
     <div>
       {mapControlsToElements(controls.controls, control => {
-        const { id, type, label, helpText, options, isShown, isDisabled, disabledMessage } = control
+        const { id, type, label, helpText, options, isShown, isDisabled, disabledMessage, isRequired } = control
         if (isShown && !isShown(data)) {
           return null
         }
 
         const disabled = convertToBool(isDisabled, data)
+        const isRequiredResult = convertToBool(isRequired, data)
         const disabledMsg = disabled ? disabledMessage : undefined
-        
+
         let inputElement
 
         switch (type) {
@@ -178,6 +181,7 @@ const InputFields = ({
           case 'choose':
             inputElement = (
               <ChooseField
+                isRequired={isRequiredResult}
                 title={disabledMsg}
                 disabled={disabled}
                 name={id}
@@ -187,24 +191,37 @@ const InputFields = ({
               />
             )
             break
-          case 'select':
-            inputElement = (
-              <SingleSelect
-                title={disabledMsg}
-                isDisabled={disabled}
-                style={{ maxWidth: '400px' }}
-                name={id}
-                options={options}
-                value={data[id]}
-                onChange={value => handleInputChange(id, value)}
-              />
-            )
-            break
+            case 'select':
+              inputElement = (
+                <SingleSelect
+                  title={disabledMsg}
+                  isDisabled={disabled}
+                  style={{ maxWidth: '400px' }}
+                  name={id}
+                  options={options}
+                  value={data[id]}
+                  onChange={value => handleInputChange(id, value)}
+                />
+              )
+              break
+              case 'multiSelect':
+                inputElement = (
+                  <InputMultiSelect
+                    title={disabledMsg}
+                    isDisabled={disabled}
+                    style={{ maxWidth: '400px' }}
+                    name={id}
+                    options={options}
+                    value={data[id]}
+                    onChange={value => handleInputChange(id, value)}
+                  />
+                )
+                break              
           case 'listOfTexts':
             inputElement = (
               <ListOfTextFields
-              id={id}
-              islinks={false}
+                id={id}
+                islinks={false}
                 title={disabledMsg}
                 disabled={disabled}
                 placeholder={(control as any).placeholder}
@@ -216,8 +233,8 @@ const InputFields = ({
           case 'listOfLinks':
             inputElement = (
               <ListOfTextFields
-              id={id}
-              islinks={true}
+                id={id}
+                islinks={true}
                 title={disabledMsg}
                 disabled={disabled}
                 placeholder={(control as any).placeholder}
@@ -295,51 +312,92 @@ function getInitialData(scraper_name, input_js_hash, controls) {
   return savedData ? JSON.parse(savedData) : defaultData
 }
 
-const ScraperFormContainer = ({ selectedScraper }) => {
-  const [submitAttempted, setSubmitAttempted] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
+function getLastScraper(scrapers) {
+  if (typeof window === 'undefined') {
+    return scrapers[0];
+  }
+
+  const input_scraper = localStorage.getItem('input_scraper');
+  
+  if (input_scraper) {
+    const selectedScraper = scrapers.find(
+      (scraper) => scraper.scraper_name === input_scraper
+    );  
+    if (selectedScraper) {
+      return selectedScraper;
+    }
+  }
+  return scrapers[0];
+}
+
+function createInitialData(selectedScraper: any) {
+  const initial_data = getInitialData(
+    selectedScraper.scraper_name,
+    selectedScraper.input_js_hash,
+    createControls(selectedScraper.input_js)
+  )
+  return {
+    "data": initial_data,
+    "selectedScraper": selectedScraper
+  }
+}
+
+const ScraperFormContainer = ({ scrapers }) => {
+  const [submitAttempted, setSubmitAttempted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  
+  const [{data, selectedScraper }, setData] = useState(() =>{
+    const selectedScraper =  getLastScraper(scrapers)
+    return createInitialData(selectedScraper)
+  }
+    
+  )
   const controls = useMemo(
     () => createControls(selectedScraper.input_js),
-    [selectedScraper]
+    [selectedScraper.scraper_name]
   )
-  const [data, setData] = useState(() =>
-    getInitialData(
-      selectedScraper.scraper_name,
-      selectedScraper.input_js_hash,
-      controls
-    )
-  )
-
   const handleDataChange = (id, value) => {
     setData(prevData => {
-      const newData = { ...prevData, [id]: value }
+      const newData = { ...prevData.data, [id]: value }
       localStorage.setItem(
         `input_${selectedScraper.scraper_name}_${selectedScraper.input_js_hash}`,
         JSON.stringify(newData)
       )
-      return newData
+      return {...prevData, data:newData} 
     })
   }
   const router = useRouter()
   // @ts-ignore
-  const validationResult = controls.validate(data)
+  let validationResult
+  try {
+    // @ts-ignore
+    validationResult = controls.validate(data)
+  } catch (error) {
+    const fullError = error.stack || error.toString()
+      return <Container>
+      <EmptyFailedInputJs error={fullError} />
+      </Container>
+
+    // <div>{}</div>   
+  }
 
   const [accords, setaccords] = useState(() => {
     const rs = {}
     // @ts-ignore
     controls.controls.forEach(control => {
       if (control.type === 'section') {        //@ts-ignore 
-        rs[control.id]  = shouldBeOpenResult(control, validationResult)
-      } 
+        rs[control.id] = shouldBeOpenResult(control, validationResult)
+      }
     })
-  
+
     return rs
-  });
+  })
   const onToggle = (id, state) => {
-    setaccords((x)=>({...x , [id]: state }))
+    setaccords((x) => ({ ...x, [id]: state }))
   }
-  
+
   const handleSubmit = async e => {
     e.preventDefault()
     setSubmitAttempted(true)
@@ -350,24 +408,33 @@ const ScraperFormContainer = ({ selectedScraper }) => {
       const response = await Api.createTask({
         scraper_name: selectedScraper.scraper_name,
         data: cleanedData,
-      }).finally(()=>setIsSubmitting(false))
+      }).finally(() => setIsSubmitting(false))
 
       const result = response.data
-      const outputId = Array.isArray(result) ? result[0].id : result.id
-      pushToRoute(router, `/output/${outputId}`)
-    } else {
-    const rs = {...accords}
-
-    // @ts-ignore
-    controls.controls.forEach(control => {
-      if (control.type === 'section') {        //@ts-ignore 
-        if (rs[control.id] === 'closed') {
-          rs[control.id]  = shouldBeOpenResult(control, validationResult)  
+      const isarr = Array.isArray(result)
+      if (isarr && result.length === 0) {
+        Toast.error('No Tasks were created.')
+      }else {
+        const outputId = isarr ? result[0].id : result.id
+        if (outputId) {
+          pushToRoute(router, `/output/${outputId}`)
+        } else {
+          console.error("failed", result)
         }
-      } 
-    })
-    
-    setaccords(rs)
+      }
+    } else {
+      const rs = { ...accords }
+
+      // @ts-ignore
+      controls.controls.forEach(control => {
+        if (control.type === 'section') {        //@ts-ignore 
+          if (rs[control.id] === 'closed') {
+            rs[control.id] = shouldBeOpenResult(control, validationResult)
+          }
+        }
+      })
+
+      setaccords(rs)
     }
   }
   // @ts-ignore
@@ -375,49 +442,46 @@ const ScraperFormContainer = ({ selectedScraper }) => {
     return <EmptyInputs />
   }
   return (
-    <EuiForm
-      isInvalid={submitAttempted && !isEmptyObject(validationResult)}
-      invalidCallout="none"
-      component="form"
-      onSubmit={handleSubmit}>
-      <NextOnlyFields
-        onReset={() => {
-          const dd = getDefaultData(controls)
-          localStorage.setItem(
-            `input_${selectedScraper.scraper_name}_${selectedScraper.input_js_hash}`,
-            JSON.stringify(dd)
-          )
-          setData(dd)
-        }}
-        accords={accords}
-        onToggle={onToggle}
-        validationResult={validationResult}
-        controls={controls}
-        data={data}
-        onDataChange={handleDataChange}
-        onSubmit={handleSubmit}
-        isSubmitting={isSubmitting}
-        submitAttempted={submitAttempted}
-      />
-    </EuiForm>
-  )
-}
-
-
-const ScraperContainer = ({ scrapers }) => {
-  const [selectedScraper, setSelectedScraper] = useState(scrapers[0])
-
-  return (
     <>
-      {scrapers.length <= 1 ? null : (
+      {scrapers.length <= 1 || typeof window === 'undefined' ? null : (
         <ScraperSelector
           scrapers={scrapers}
           selectedScraper={selectedScraper}
-          onSelectScraper={setSelectedScraper}
+          onSelectScraper={(x)=>{
+            localStorage.setItem(
+              `input_scraper`,
+              x.scraper_name
+            )
+              setData(createInitialData(x))
+          }}
+        />)}
+      <EuiForm
+        isInvalid={submitAttempted && !isEmptyObject(validationResult)}
+        invalidCallout="none"
+        component="form"
+        onSubmit={handleSubmit}>
+        <NextOnlyFields
+          onReset={() => {
+            const dd = getDefaultData(controls)
+            localStorage.setItem(
+              `input_${selectedScraper.scraper_name}_${selectedScraper.input_js_hash}`,
+              JSON.stringify(dd)
+            )
+            setData(x=>({...x, data:dd}))
+          }}
+          accords={accords}
+          onToggle={onToggle}
+          validationResult={validationResult}
+          controls={controls}
+          data={data}
+          onDataChange={handleDataChange}
+          onSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          submitAttempted={submitAttempted}
         />
-      )}
-      <ScraperFormContainer selectedScraper={selectedScraper} />
+      </EuiForm>
     </>
+
   )
 }
 
@@ -426,7 +490,7 @@ const InputComponent = ({ scrapers }) => {
     return <EmptyScraper />
   }
 
-  return <ScraperContainer scrapers={scrapers} />
+  return <ScraperFormContainer scrapers={scrapers} />
 }
 
 export default InputComponent

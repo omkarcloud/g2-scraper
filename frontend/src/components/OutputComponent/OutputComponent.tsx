@@ -10,14 +10,13 @@ import {
   EuiModalFooter,
   EuiModalHeader,
   EuiModalHeaderTitle,
-  EuiPagination,
   EuiText,
   formatDate,
 } from '@elastic/eui'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Api from '../../utils/api'
-import { TaskStatus, filterAndMapAllTasks,  filterIsPendingTasks, filterIsProgressTasks, } from '../../utils/models'
+import { TaskStatus, filterAndMapAllTasks, filterIsPendingTasks, filterIsProgressTasks, } from '../../utils/models'
 import { EmptyOutputs, EmptyScraper } from '../Empty/Empty'
 import Toast from '../../utils/cogo-toast'
 import ClickOutside from '../ClickOutside/ClickOutside'
@@ -31,9 +30,11 @@ import {
   TabWrapper,
 } from '../../components/Wrappers'
 import ServerStatusComponent from '../../components/ServerStatusComponent'
+import { Pagination } from '../Pagination'
 
 function convertLocalDateToUTCDate(date, toUTC) {
-  date = new Date(date)
+  // auto converts so no need
+  return new Date(date+"Z")
   const localOffset = date.getTimezoneOffset() * 60000
   const localTime = date.getTime()
   if (toUTC) {
@@ -125,7 +126,7 @@ function calculateDuration(obj) {
   if (obj.started_at) {
     // Convert datetime strings to Date objects
     const startedAt = new Date(obj.started_at)
-    const endTime = obj.finished_at ? new Date(obj.finished_at) : convertLocalDateToUTCDate(new Date(), true)
+    const endTime = obj.finished_at ? new Date(obj.finished_at) : new Date()
     // @ts-ignore
     const duration = (endTime - startedAt) / 1000
 
@@ -306,16 +307,7 @@ const TaskTable = ({ activePage, onPageClick, isLoading, total_pages, tasks, upd
               className: 'pointer',
             })}
           />
-          <EuiPagination
-            aria-label={'Pagination'}
-            style={{
-              display: 'flex',
-              justifyContent: 'end',
-            }}
-            pageCount={total_pages}
-            activePage={activePage - 1}
-            onPageClick={(x) => onPageClick(x)}
-          />
+          <Pagination {...{ total_pages, activePage: activePage - 1, onPageClick }} />
         </>
       )}
 
@@ -327,38 +319,38 @@ const TaskTable = ({ activePage, onPageClick, isLoading, total_pages, tasks, upd
 
 
 const OutputComponent = (props) => {
-  const { scrapers, tasks: taskResponse }  = props
+  const { scrapers, tasks: taskResponse } = props
 
   const [state, setState] = useState({ ...taskResponse, active_page: 1 })
   const [isLoading, setLoading] = useState(false)
   const total_pages = state.total_pages
   const results = state.results
   const active_page = state.active_page
-  
+
   useEffect(() => {
     const pendingTsks = filterIsPendingTasks(results)
     const progressTsks = filterIsProgressTasks(results)
     const hasTasks = pendingTsks.length > 0 || progressTsks.length > 0
     if (!isLoading && hasTasks) {
-      const isCleared = { isCleared: false }; // Initialize as an object with isCleared property
+      const isCleared = { isCleared: false } // Initialize as an object with isCleared property
       const intervalId = setInterval(async () => {
         if (!isCleared.isCleared) { // Access the isCleared property
           const all_tasks = filterAndMapAllTasks(pendingTsks.concat(progressTsks))
-          const response = await Api.isAnyTaskFinished(pendingTsks.map(task => task.id), progressTsks.map(task => task.id),  all_tasks)
-          if (response.data.result && !isCleared.isCleared) { 
+          const response = await Api.isAnyTaskFinished(pendingTsks.map(task => task.id), progressTsks.map(task => task.id), all_tasks)
+          if (response.data.result && !isCleared.isCleared) {
             const { data } = await Api.getTasks(active_page)
             if (!isCleared.isCleared) { // Access the isCleared property
               setState((x) => ({ ...data, active_page: x.active_page > data.total_pages ? 1 : x.active_page }))
             }
-          }          
+          }
         }
       }, 1000)
       return () => {
-        isCleared.isCleared = true; // Set the isCleared property to true
+        isCleared.isCleared = true // Set the isCleared property to true
         return clearInterval(intervalId)
       }
     }
-  }, [isLoading, results, active_page]);
+  }, [isLoading, results, active_page])
 
 
   function updateState(data, current_page) {
@@ -382,29 +374,29 @@ const OutputComponent = (props) => {
   }
   let cp
   if (!scrapers || scrapers.length === 0) {
-    cp =  <EmptyScraper />
+    cp = <EmptyScraper />
   }
 
   else if (results && results.length === 0) {
-    cp =  <EmptyOutputs />
-  }else {
+    cp = <EmptyOutputs />
+  } else {
 
-    cp =  <TaskTable activePage={active_page} onPageClick={x => onPageChange(x + 1)} isLoading={isLoading} total_pages={total_pages} tasks={results} updateTasks={updateState} />
+    cp = <TaskTable activePage={active_page} onPageClick={x => onPageChange(x + 1)} isLoading={isLoading} total_pages={total_pages} tasks={results} updateTasks={updateState} />
   }
   return <> <OutputTabsContainer>
-          <ServerStatusComponent/>
-          <Description {...props} />
-          <Tabs onTabChange={(id) =>{
-            if (id === TabsId.OUTPUT){
-              onPageChange(1)
-            }
-          }} initialSelectedTab={TabsId.OUTPUT} />
-        </OutputTabsContainer>
-        <OutputContainer>
-          <TabWrapper>
-            {cp}
-          </TabWrapper>
-        </OutputContainer>
+    <ServerStatusComponent />
+    <Description {...props} />
+    <Tabs onTabChange={(id) => {
+      if (id === TabsId.OUTPUT) {
+        onPageChange(1)
+      }
+    }} initialSelectedTab={TabsId.OUTPUT} />
+  </OutputTabsContainer>
+    <OutputContainer>
+      <TabWrapper>
+        {cp}
+      </TabWrapper>
+    </OutputContainer>
   </>
 }
 
