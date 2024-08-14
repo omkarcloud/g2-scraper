@@ -42,3 +42,4 @@ db.sqlite3
 create_cache.py
 cache/.DS_Store
 .DS_Store
+categ_links_to_options.py
