@@ -28,19 +28,11 @@ def split_task(data):
             categories.append(query)
         else:
             products.append(query)
-
-    if categories:
-        for category in categories:
-            result.append(
-                {
-                    "type": "category",
-                    "search_queries": category,
-                    "max_reviews": max_reviews,
-                    "api_key": data["api_key"],
-                }
-            )
+    ps = make_categories(data, categories, max_reviews)
+    
+    result.extend(ps) 
+    
     if products:
-        
         result.append(
             {
                 "type": "product",
@@ -50,7 +42,37 @@ def split_task(data):
             }
         )
 
-    return result  # Add the scraper to the server
+    return result 
+
+def make_categories(data, categories, max_reviews):
+    ps = []
+    p_set = set()
+    if categories:
+        for category in categories:            
+            if category not in p_set:
+                ps.append(
+                    {
+                        "type": "category",
+                        "search_queries": category,
+                        "max_reviews": max_reviews,
+                        "api_key": data["api_key"],
+                    }
+                )
+                p_set.add(category)
+    if data["categories"]:
+        for category in data["categories"]:
+            category = "https://www.g2.com/categories/" + category
+            if category not in p_set:
+                ps.append(
+                    {
+                        "type": "category",
+                        "search_queries": category,
+                        "max_reviews": max_reviews,
+                        "api_key": data["api_key"],
+                    }
+                )       
+                p_set.add(category)
+    return ps # Add the scraper to the server
 
 
 def get_task_name(data):
