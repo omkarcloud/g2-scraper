@@ -128,8 +128,8 @@ We scrape over 45+ data points, important among them are:
 
 ### ❓ How many products, categories, and reviews are there on G2?
 
-- **Products**: Over 170K+ products are listed on G2. You can view the complete list [here](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/g2/g2-products.json).
-- **Categories**: Over 2,051 categories are listed on G2. You can view the complete list [here](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/g2/g2-categories.json).
+- **Products**: Over 185K+ products are listed on G2. You can view the complete list [here](https://www.omkar.cloud/downloads/g2-products-links.json).
+- **Categories**: Over 2,163 categories are listed on G2. You can view the complete list [here](https://www.omkar.cloud/downloads/g2-categories-links.json).
 - **Reviews**: Over 2.9M+ reviews are listed on G2.
 
 ### ❓ Can I see a sample of the scraped data?
