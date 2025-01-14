@@ -21,7 +21,7 @@ def split_task(data):
     products = []
     max_reviews = data["max_reviews"]
     if max_reviews is None:
-        max_reviews = 2500
+        max_reviews = 1000
 
     for query in data["search_queries"]:
         if "categories" in query:

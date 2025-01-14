@@ -71,7 +71,7 @@ function getInput(controls) {
         .numberGreaterThanOrEqualToZero('max_reviews',
             {
                 placeholder: 25,
-                max: 2500,
+                max: 1000,
             }
         )
         .text('api_key', {

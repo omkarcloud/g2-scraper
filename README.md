@@ -123,7 +123,7 @@ We scrape over 45+ data points, important among them are:
 - Category
 - Comparisons
 - Alternatives
-- All Reviews upto 2500
+- All Reviews upto 1000
 - And many more...
 
 ### ❓ How many products, categories, and reviews are there on G2?
