@@ -4,7 +4,7 @@ Extract G2 product data—names, descriptions, reviews, ratings, comparisons, al
 
 ## Disclaimer for G2 Scraper Project
 
-*> This G2 Scraper is provided for educational and research purposes only. By using this G2 Scraper, you agree to comply with local and international laws regarding data scraping and privacy. The authors and contributors are not responsible for any misuse of this software. This tool should not be used to violate the rights of others, or for unethical purposes.*
+> This G2 Scraper is provided for educational and research purposes only. By using this G2 Scraper, you agree to comply with local and international laws regarding data scraping and privacy. The authors and contributors are not responsible for any misuse of this software. This tool should not be used to violate the rights of others, or for unethical purposes.
 
 We take the concerns of the G2 Scraper Project very seriously. For any concerns, please contact Chetan Jain at [chetan@omkar.cloud](mailto:chetan@omkar.cloud). We will promptly reply to your emails.
 
@@ -185,7 +185,7 @@ After December 1st, 2025, we'll introduce a paid tier with a generous free tier 
 
 ## I Need other Data points. Do You Have It?
 
-This scraper is optimized for G2. If you need other platforms, reach out on WhatsApp—we can add what you need or suggest the best alternative for your use case.
+This scraper is for G2. If you need other platforms, reach out on WhatsApp—we can add what you need or suggest the best alternative for your use case.
 
 
 [![Contact Us on WhatsApp about Additional Data](https://raw.githubusercontent.com/omkarcloud/assets/master/images/whatsapp-us.png)](https://api.whatsapp.com/send?phone=918295042963&text=Hi,%20I%20need%20help%20with%20data.)
