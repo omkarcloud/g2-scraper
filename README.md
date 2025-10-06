@@ -1,257 +1,218 @@
-![G2 Scraper Featured Image](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/g2-scraper-featured-image.png)
+# G2 Scraper
 
-<div align="center" style="margin-top: 0;">
-  <h1>✨ G2 Scraper 🚀</h1>
-  <p>💦 Find G2 Product Details 💦</p>
-</div>
-<em>
-  <h5 align="center">(Programming Language - Python 3)</h5>
-</em>
-<p align="center">
-  <a href="#">
-    <img alt="g2-scraper forks" src="https://img.shields.io/github/forks/omkarcloud/g2-scraper?style=for-the-badge" />
-  </a>
-  <a href="#">
-    <img alt="Repo stars" src="https://img.shields.io/github/stars/omkarcloud/g2-scraper?style=for-the-badge&color=yellow" />
-  </a>
-  <a href="#">
-    <img alt="g2-scraper License" src="https://img.shields.io/github/license/omkarcloud/g2-scraper?color=orange&style=for-the-badge" />
-  </a>
-  <a href="https://github.com/omkarcloud/g2-scraper/issues">
-    <img alt="issues" src="https://img.shields.io/github/issues/omkarcloud/g2-scraper?color=purple&style=for-the-badge" />
-  </a>
-</p>
-<p align="center">
-  <img src="https://views.whatilearened.today/views/github/omkarcloud/g2-scraper.svg" width="80px" height="28px" alt="View" />
-</p>
-
-<p align="center">
-  <a href="https://gitpod.io/#https://github.com/omkarcloud/g2-scraper">
-    <img alt="Open in Gitpod" src="https://gitpod.io/button/open-in-gitpod.svg" />
-  </a>
-</p>
-
----
+Extract G2 product data—names, descriptions, reviews, ratings, comparisons, alternatives, and more—into clean Excel files in seconds.
 
 ## Disclaimer for G2 Scraper Project
 
-> By using G2 Scraper, you agree to comply with all applicable local and international laws related to data scraping, copyright, and privacy. The developers of G2 Scraper will not be held liable for any misuse of this software. It is the user's sole responsibility to ensure adherence to all relevant laws regarding data scraping, copyright, and privacy, and to use G2 Scraper in an ethical and legal manner, in line with both local and international regulations.
+*> This G2 Scraper is provided for educational and research purposes only. By using this G2 Scraper, you agree to comply with local and international laws regarding data scraping and privacy. The authors and contributors are not responsible for any misuse of this software. This tool should not be used to violate the rights of others, for unethical purposes, or to use data in an unauthorized or illegal manner.*
 
-We take concerns related to the G2 Scraper Project very seriously. If you have any inquiries or issues, please contact Chetan Jain at [chetan@omkar.cloud](mailto:chetan@omkar.cloud). We will take prompt and necessary action in response to your emails.
+We take the concerns of the G2 Scraper Project very seriously. For any concerns, please contact Chetan Jain at [chetan@omkar.cloud](mailto:chetan@omkar.cloud). We will promptly reply to your emails.
 
-## 👉 Explore Our Other Awesome Products
+## 🎥 Watch G2 Scraper in Action (60-Second Demo)
 
-- ✅ [Botasaurus](https://github.com/omkarcloud/botasaurus): The All-in-One Web Scraping Framework with Anti-Detection, Parallelization, Asynchronous, and Caching Superpowers.
+See how easy it is to extract hundreds of G2 product listings in under a minute.
+
+[![G2 Scraper Demo Video](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/g2-scraper-featured-image.png)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+
+## ⚡ Why Choose Our G2 Scraper?
+
+* **Unlimited Extractions** – No monthly fees, no account restrictions. Extract as much data as you need.
+* **Massive Time Savings** – Get hundreds of product listings in minutes, not hours. Perfect for market researchers, B2B marketers, and competitive intelligence analysts.
+* **Complete Data Coverage** – [See what you can extract.](#what-data-is-available)
+
+## 📌 What is G2 Scraper?
+
+**omkar.cloud G2 Scraper** is a powerful tool that extracts structured product data directly from G2.com search results without requiring any coding knowledge.
+
+Simply **enter your search criteria**, and our scraper handles the rest—extracting, parsing, and delivering clean, ready-to-use G2 product data in Excel format.
+
+## 🚀 How to Use It (3 Simple Steps)
+
+### Step 1: Create Your Free Account
+
+Sign up for a [Free Account on omkar.cloud](https://www.omkar.cloud/auth/sign-up/?redirect=/tools/g2-scraper/input/&utm_source=github&utm_medium=repo&utm_campaign=g2-repo). It's free, and we don't ask for your credit card.
+
+[![Press Try Free](https://raw.githubusercontent.com/omkarcloud/assets/master/images/try-free.png)](https://www.omkar.cloud/auth/sign-up/?redirect=/tools/g2-scraper/input/)
+
+### Step 2: Enter Your Search Criteria
+
+Paste one or more G2 search URLs (category URLs, product URLs, or product slugs)
+
+![Enter Input and Run](https://www.omkar.cloud/images/tools/g2/input.png)
+
+### Step 3: Download Your Data
+
+Click "Extract" and get your structured G2 product data immediately as Excel, CSV, or JSON.
+
+![Enjoy Results](https://www.omkar.cloud/images/tools/g2/output.png)
+
+## 📄 What Data is Available?
+
+### 🔍 Product Data Sample
+
+```json
+{
+  "product_id": 2075,
+  "product_name": "Jenkins",
+  "product_logo": "https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_816e7e27d5ac09363053c4ca43e63c5c/jenkins.png",
+  "g2_link": "https://www.g2.com/products/jenkins/reviews",
+  "what_is": "The leading open source automation server, Jenkins provides hundreds of plugins to support building, deploying and automating any project.",
+  "product_description": "Jenkins is an application that monitors executions of repeated jobs, such as building a software project or jobs run by cron.",
+  "reviews": 513,
+  "rating": 4.4,
+  "category": {
+    "name": "Continuous Integration Tools",
+    "link": "https://www.g2.com/categories/continuous-integration"
+  },
+  "parent_category": {
+    "name": "DevOps Software",
+    "link": "https://www.g2.com/categories/devops"
+  },
+  "company_id": 1523,
+  "seller": "https://www.g2.com/sellers/the-continuous-delivery-foundation-cdf",
+  "company_phone": null,
+  "company_location": "San Francisco, CA",
+  "company_founded_year": 2019,
+  "twitter": "https://twitter.com/cdeliveryfdn",
+  "number_of_followers_on_twitter": 8125,
+  "linkedin": "https://www.linkedin.com/company/19100461/",
+  "number_of_employees_on_linkedin": 26,
+  "is_claimed": true,
+  "categories": [
+    {
+      "name": "AWS Marketplace",
+      "link": "https://www.g2.com/categories/aws-marketplace"
+    },
+    {
+      "name": "Continuous Delivery",
+      "link": "https://www.g2.com/categories/continuous-delivery-tools"
+    }
+  ],
+  "screenshots": [
+    "https://images.g2crowd.com/uploads/attachment/file/40846/jenkins_screenshot.jpg"
+  ],
+  "pricing_plans": [
+    {
+      "plan_name": "Small-Business",
+      "plan_price": "",
+      "plan_description": "48% less expensive than the avg. Continuous Integration product"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "GitHub",
+      "link": "https://www.g2.com/products/github/reviews",
+      "rating": 4,
+      "reviews": 2164
+    }
+  ],
+  "comparisons": [
+    {
+      "link": "https://www.g2.com/compare/azure-devops-server-vs-jenkins",
+      "name": "Azure DevOps Server",
+      "logo": "https://images.g2crowd.com/uploads/product/image/small_square/azure-devops-server.png"
+    }
+  ],
+  "star_distribution": {
+    "1": 2,
+    "2": 5,
+    "3": 23,
+    "4": 148,
+    "5": 335
+  },
+  "all_reviews": [
+    {
+      "review_id": 9989003,
+      "review_title": "Jenkins Review: Simplifying Automation and Integration",
+      "review_content": "What do you like best about Jenkins?\nJenkins is a great tool...",
+      "review_rating": 5.0,
+      "reviewer": {
+        "reviewer_name": "Dr habeeb M.",
+        "reviewer_job_title": "Data scientist",
+        "reviewer_link": "https://www.g2.com/users/404f3753-ddf5-4d63-ba67-35a9a35c9ca8"
+      },
+      "publish_date": "2024-08-11T00:00:00",
+      "reviewer_company_size": "Mid-Market(51-1000 emp.)"
+    }
+  ]
+}
+```
+
+### 📊 Category Data Sample
+
+```json
+{
+  "name": "Salesforce Sales Cloud",
+  "link": "https://www.g2.com/products/salesforce-salesforce-sales-cloud/reviews",
+  "users": [
+    "Account Executive",
+    "Account Manager"
+  ],
+  "industries": [
+    "Computer Software",
+    "Information Technology and Services"
+  ],
+  "market_segments": [
+    "46% Mid-Market",
+    "34% Enterprise"
+  ]
+}
+```
+
+### 📈 G2 Statistics:
+- **Products**: Over 185K+ products are listed on G2. View the complete list [here](https://www.omkar.cloud/downloads/g2-products-links.json).
+- **Categories**: Over 2,163 categories are listed on G2. View the complete list [here](https://www.omkar.cloud/downloads/g2-categories-links.json).
+- **Reviews**: Over 2.9M+ reviews are listed on G2.
+
+## What Can I Do With It?
+
+- **Competitive Intelligence** – Monitor competitor products, features, pricing, and customer feedback to stay ahead.
+- **Market Research** – Analyze market trends, popular products, and emerging categories in your industry.
+- **Lead Generation** – Identify potential customers by analyzing who's using which software and their pain points.
+- **Product Development** – Understand feature requirements and user needs based on thousands of real reviews.
+- **Sales Enablement** – Gather intelligence about prospects' current tech stack and switching patterns.
+- **Content Marketing** – Create data-driven content, comparison articles, and industry reports based on G2 insights.
+- **Investment Research** – Evaluate software companies and market opportunities for venture capital or acquisition decisions.
+- **Partnership Development** – Identify potential integration partners and complementary products.
+
+Ultimately, it helps you make data-driven decisions to grow your B2B software or services business.
+
+## 💰 How Much Does It Cost?
+
+**Currently free** for unlimited queries!
+
+After December 1st, 2025, we'll introduce a paid tier with a generous free tier that will continue to meet most users' needs.
+
+## I Need other Data points. Do You Have It?
+
+This scraper is optimized for G2. If you need other platforms, reach out on WhatsApp—we can add what you need or suggest the best alternative for your use case.
+
+
+[![Contact Us on WhatsApp about Additional Data](https://raw.githubusercontent.com/omkarcloud/assets/master/images/whatsapp-us.png)](https://api.whatsapp.com/send?phone=918295042963&text=Hi,%20I%20need%20help%20with%20data.)
+
+## Why Should I Choose omkar.cloud?
+
+We want to give you a great experience:
+
+- Our open source work is sponsored by [1000+ people on GitHub.](https://github.com/sponsors/omkarcloud)
+- Free to try, reliable, and continuously maintained scraper.
+- 90-Day Refund Guarantee for peace of mind. We make refunds so simple, you can get a refund in just [2 clicks](https://www.omkar.cloud/refund-process).
+- Have a question? We're ready to help you via [WhatsApp](https://api.whatsapp.com/send?phone=918295042963&text=Hi,%20I%20would%20like%20to%20learn%20more%20about%20your%20G2%20Scraper) or [email](mailto:chetan@omkar.cloud?subject=Help%20with%20G2%20Scraper&body=I%20need%20help%20with%20using%20the%20G2%20Scraper.).
+
+## 📞 Need Help or Have Questions?
+
+We're here to help you extract G2 data efficiently:
+
+* **WhatsApp:** [Message us for instant support](https://api.whatsapp.com/send?phone=918295042963&text=Hi,%20I%20would%20like%20to%20learn%20more%20about%20your%20G2%20Scraper)
+
+[![Contact Us on WhatsApp about G2 Scraper](https://raw.githubusercontent.com/omkarcloud/assets/master/images/whatsapp-us.png)](https://api.whatsapp.com/send?phone=918295042963&text=Hi,%20I%20would%20like%20to%20learn%20more%20about%20your%20G2%20Scraper)
+
+* **Email:** [Get in touch](mailto:chetan@omkar.cloud?subject=Help%20with%20G2%20Scraper&body=I%20need%20help%20with%20using%20the%20G2%20Scraper.)
+
+[![Contact Us on Email about G2 Scraper](https://raw.githubusercontent.com/omkarcloud/assets/master/images/ask-on-email.png)](mailto:chetan@omkar.cloud?subject=Help%20with%20G2%20Scraper&body=I%20need%20help%20with%20using%20the%20G2%20Scraper.)
+
+We'll respond within **24 hours** 🚀
 
 ---
 
-G2 Scraper helps you scrape G2 Products. 🚀
-
-## ⚡ Benefits
-
-1. Absolutely, 0 risk as we offer a generous 90-Day No Question Asked Refund Policy!
-
-2. Easily access G2 results through our user-friendly dashboard by product links or categories, and also get all product reviews.
-
-3. Get 101% accurate, fresh (updated within the last 30 days), and comprehensive data, allowing you to use the results to their full potential.
-
-In just 5 minutes, you'll extract **400+ products** from G2.
-
-![G2 Result](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/g2_result.png)
-
-## 📦 Requirements
-
-To use this tool, you'll need:
-
-- Node.js version 16 or later to run the UI Dashboard (please check your Node.js version by running `node -v`)
-- Python for running the scraper
-
-**Don't have Node.js or Python? No problem!**
-
-You can easily run this tool within Gitpod, a cloud-based development environment, by following [these steps](https://github.com/omkarcloud/g2-scraper/blob/master/advanced.md#-i-dont-have-python-or-im-facing-errors-when-setting-up-the-scraper-on-my-pc-how-to-solve-it).
-
-## 🚀 Getting Started
-
-Let's get started by following these super simple steps:
-
-1️⃣ Clone the Magic 🧙‍♀️:
-```shell
-git clone https://github.com/omkarcloud/g2-scraper
-cd g2-scraper
-```
-
-2️⃣ Install Dependencies 📦:
-```shell
-python -m pip install -r requirements.txt
-python run.py install
-```
-
-3️⃣ Launch the UI Dashboard 🚀:
-```shell
-python run.py
-```
-
-4️⃣ Open your browser and go to [http://localhost:3000](http://localhost:3000), then press the Run button to see G2 Products. 😎
-
-![G2 Result](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/g2_result.png)
-
-*Note: If you don't have Node.js 16+ and Python installed or you are facing errors, follow this Simple FAQ [here](https://github.com/omkarcloud/g2-scraper/blob/master/advanced.md#-i-dont-have-python-or-im-facing-errors-when-setting-up-the-scraper-on-my-pc-how-to-solve-it), and you will have your search results in the next 5 Minutes*
-
-## ⚡ Enlightening Questions
-
-### ❓ How to Get Results for My Queries?
-
-1. Visit [http://localhost:3000](http://localhost:3000) and enter either the
-    - G2 Category URL (e.g., https://www.g2.com/categories/marketing-automation)
-    - G2 Product URL (e.g., https://www.g2.com/products/jenkins/reviews)
-    - G2 Product Slug (e.g., postman)
-
-![Queries](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/queries.png)
-
-2. Now, simply press the Run button.
-
-![Run](https://raw.githubusercontent.com/omkarcloud/assets/master/images/run.png)
-
-
-### ❓ What Data Points Are Scraped?
-
-We scrape over 45+ data points, important among them are:
-- Name
-- Product Description
-- Reviews
-- Rating
-- Category
-- Comparisons
-- Alternatives
-- All Reviews upto 1000
-- And many more...
-
-### ❓ How many products, categories, and reviews are there on G2?
-
-- **Products**: Over 185K+ products are listed on G2. You can view the complete list [here](https://www.omkar.cloud/downloads/g2-products-links.json).
-- **Categories**: Over 2,163 categories are listed on G2. You can view the complete list [here](https://www.omkar.cloud/downloads/g2-categories-links.json).
-- **Reviews**: Over 2.9M+ reviews are listed on G2.
-
-### ❓ Can I see a sample of the scraped data?
-
-You can find sample overviews and reviews of 1000 products below:
-
-- [Overview](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/g2/samples/overview.csv)
-- [Reviews](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/g2/samples/reviews.csv)
-
-### ❓ How to Scrape More Products?
-
-Kindly follow these steps to use our Rapid API and easily get the g2 product details:
-
-1. Sign up on RapidAPI by visiting [this link](https://rapidapi.com/auth/sign-up).
-
-![Sign Up on RapidAPI](https://raw.githubusercontent.com/omkarcloud/assets/master/images/sign-up.png)
-
-2. Subscribe to the Free Plan by visiting [this link](https://rapidapi.com/Chetan11dev/api/g2-data-api/pricing).
-
-![Subscribe to Free Plan](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/g2-free-subscription.png)
-
-3. Copy the API key.
-![Copy the API Key](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/g2-api-key.png)
-
-4. Put the Key in the "Rapid API Key" textbox and simply run it:
-
-![api-key](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/api-key.png)
-
-The first 50 products are free to scrape with the API. After that, you can upgrade to the Pro Plan to scrape 4,000 products for $16, and access 101% accurate, fresh, and comprehensive data points with 45+ fields.
-
-### ❓ Do You Offer Discounts for Complete or Partial Datasets?
-
-If you want to:
-- Get the complete G2 dataset or 40K+ products
-- Get the complete G2 reviews dataset or 400K+ reviews
-
-Please contact us, as
-- we offer a 25% discount compared to our API pricing.
-- The data will be freshly scraped, and we will deliver the JSON/CSV files of the requested dataset to you within 7 days.
-- Absolutely, 0 risk as we offer a generous 90-Day No Question Asked Refund Policy!
-
-Contacting us will only take a few minutes but will save you a lot of time and money.
-
-[![Contact Us on WhatsApp about G2 Scraper](https://raw.githubusercontent.com/omkarcloud/assets/master/images/whatsapp-us.png)](https://api.whatsapp.com/send?phone=918295042963&text=Hi,%20I%20would%20like%20to%20learn%20more%20about%20your%20g2%20scraper)
-
-[![Contact Us on Email about G2 Scraper](https://raw.githubusercontent.com/omkarcloud/assets/master/images/ask-on-email.png)](mailto:chetan@omkar.cloud)
-
-### ❓ What if I Don't Get Value from It?
-
-We wholeheartedly ❤️ believe in the value our product brings for you, especially since it has successfully worked for hundreds of people like you.
-
-But, we also understand the reservations you might have.
-
-That's why we've put the ball in your court: **If, within the next 90 days, you feel that our product hasn't met your expectations, don't hesitate. Reach out to us, and within 24 hours, we will gladly refund your money, no questions and no hassles.**
-
-The risk is entirely on us! because we're that confident in what we've created!
-
-### ❓ How Do I Get a Refund?
-
-We are ethical and honest, and we will not keep your money if you are not satisfied with our product. Requesting a refund is a simple process that should only take about 5 minutes.
-
-**For API:**
-- You need to submit a support request [here](https://support.rapidapi.com/hc/en-us/requests/new), and we will issue the refund.
-
-![request-refund](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/images/request-refund.png)
-
-**For Dataset Purchase:**
-- It's even easier to get a refund in case of a dataset purchase. Simply ask for a refund via WhatsApp/Email and provide your PayPal email address. We will issue the complete refund within 24 hours, without any questions and without any hidden charges.
-
-### ❓ This Scraper is Truly One-of-a-Kind, Something I've Never Seen Before. How Did You Build It?
-
-Thank you! We used Botasaurus, which is the secret behind our awesome G2 Scraper. 
-
-Botasaurus is a web scraping framework that makes life a lot easier for web scrapers.
-
-It handled the hardest parts of our scraper, such as:
-
-- Creating a gorgeous UI dashboard with task management features
-- Sorting, filtering, and exporting data as CSV, JSON, Excel, etc.
-- Caching, parallel and asynchronous scraping
-
-If you're a web scraper, I really recommend learning about Botasaurus [here](https://github.com/omkarcloud/botasaurus) 🚀.
-
-Trust me, learning Botasaurus will only take 20 minutes, but I guarantee it will definitely save you thousands of hours in your life as a web scraper.
-
-<p align="center">
-  <a href="https://github.com/omkarcloud/botasaurus">
-    <img src="https://raw.githubusercontent.com/omkarcloud/botasaurus/master/images/mascot.png" alt="botasaurus" />
-  </a>
-</p>
-
-### ❓ Advanced Questions
-
-Having read this page, you have all the knowledge needed to effectively use the tool.
-
-You may choose to read the following questions based on your interests:
-
-1. [I Don't Have Python, or I'm Facing Errors When Setting Up the Scraper on My PC. How to Solve It?](https://github.com/omkarcloud/g2-scraper/blob/master/advanced.md#-i-dont-have-python-or-im-facing-errors-when-setting-up-the-scraper-on-my-pc-how-to-solve-it)
-2. [How to Update the Scraper to the Latest Version?](https://github.com/omkarcloud/g2-scraper/blob/master/advanced.md#-how-to-update-the-scraper-to-the-latest-version)
-
-### ❓ Need More Help or Have Additional Questions?
-
-For further help, feel free to reach out to us through:
-
-- **WhatsApp:** If you prefer WhatsApp, simply send a message [here](https://api.whatsapp.com/send?phone=918295042963&text=Hi,%20I%20would%20like%20to%20learn%20more%20about%20your%20g2%20scraper). Also, to help me provide the best possible answer, please include as much detail as possible.
-
-  [![Contact Us on WhatsApp about G2 Scraper](https://raw.githubusercontent.com/omkarcloud/assets/master/images/whatsapp-us.png)](https://api.whatsapp.com/send?phone=918295042963&text=Hi,%20I%20would%20like%20to%20learn%20more%20about%20your%20g2%20scraper)
-
-- **Email:** If you prefer email, kindly send your queries to [chetan@omkar.cloud](mailto:chetan@omkar.cloud). Also, to help me provide the best possible answer, please include as much detail as possible.
-
-  [![Contact Us on Email about G2 Scraper](https://raw.githubusercontent.com/omkarcloud/assets/master/images/ask-on-email.png)](mailto:chetan@omkar.cloud)
-
-We look forward to helping you and will respond to emails and WhatsApp messages within 24 hours.
-
-Good Luck!
-
-## Love It? [Star It ⭐!](https://github.com/omkarcloud/g2-scraper)
-
-Become one of our amazing stargazers by giving us a star ⭐ on GitHub!
-
-It's just one click, but it means the world to me.
-
-[![Stargazers for @omkarcloud/g2-scraper](https://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=omkarcloud&repo=g2-scraper)](https://github.com/omkarcloud/g2-scraper/stargazers)
-
-## Made with ❤️ using [Botasaurus Web Scraping Framework](https://github.com/omkarcloud/botasaurus)
+## 🔥 **[Try It Now & Get G2 Product Data in Minutes!](https://www.omkar.cloud/auth/sign-up/?redirect=/tools/g2-scraper/input/&utm_source=github&utm_medium=repo&utm_campaign=g2-repo)** 🚀
