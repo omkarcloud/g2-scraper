@@ -4,7 +4,7 @@ Extract G2 product data—names, descriptions, reviews, ratings, comparisons, al
 
 ## Disclaimer for G2 Scraper Project
 
-*> This G2 Scraper is provided for educational and research purposes only. By using this G2 Scraper, you agree to comply with local and international laws regarding data scraping and privacy. The authors and contributors are not responsible for any misuse of this software. This tool should not be used to violate the rights of others, for unethical purposes, or to use data in an unauthorized or illegal manner.*
+*> This G2 Scraper is provided for educational and research purposes only. By using this G2 Scraper, you agree to comply with local and international laws regarding data scraping and privacy. The authors and contributors are not responsible for any misuse of this software. This tool should not be used to violate the rights of others, or for unethical purposes.*
 
 We take the concerns of the G2 Scraper Project very seriously. For any concerns, please contact Chetan Jain at [chetan@omkar.cloud](mailto:chetan@omkar.cloud). We will promptly reply to your emails.
 
@@ -36,7 +36,7 @@ Sign up for a [Free Account on omkar.cloud](https://www.omkar.cloud/auth/sign-up
 
 ### Step 2: Enter Your Search Criteria
 
-Paste one or more G2 search URLs (category URLs, product URLs, or product slugs)
+Enter product URLs, product slugs or category URLs, you want to extract data for.
 
 ![Enter Input and Run](https://www.omkar.cloud/images/tools/g2/input.png)
 
