@@ -394,6 +394,10 @@ elif response.status_code == 429:
 
 All in structured JSON. Ready to use in your app.
 
+Find the complete 185K G2 Product list here: https://www.omkar.cloud/downloads/g2-products-links.json
+
+Find the complete 2,163 G2 Categories list here: https://www.omkar.cloud/downloads/g2-categories-links.json
+
 ### How accurate is the data?
 
 The data comes straight from real G2 profiles — real ratings, real reviews, real pricing, real company details. No estimates, no made-up numbers.
