@@ -399,7 +399,13 @@ All in structured JSON. Ready to use in your app.
 
 ### How accurate is the data?
 
-Data is pulled from G2 in real time. Every API call fetches live data — not cached or stale results. Ratings, reviews, pricing, and company details reflect what's on G2 right now.
+The data comes straight from real G2 profiles — real ratings, real reviews, real pricing, real company details. No estimates, no made-up numbers.
+
+### How do I get the newest data?
+
+The data served via the API is a few months old. For most use cases — competitive research, lead gen, market analysis — that works great.
+
+If you need the newest data, you'll want the full G2 dataset — all 185,000+ products with their latest reviews. [WhatsApp us](https://api.whatsapp.com/send?phone=918178804274&text=I%20want%20to%20buy%20the%20full%20G2%20dataset%20with%20the%20newest%20data.) to get the complete, up-to-date dataset.
 
 ### Can I pass a slug instead of a full URL?
 
