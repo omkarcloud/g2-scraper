@@ -8,6 +8,8 @@ Scrape G2 product details, reviews, ratings, pricing, and full category listings
 - 100 free requests per month. No credit card required.
 - Need all of G2 at once? The complete dataset is available for purchase. [Contact us](https://api.whatsapp.com/send?phone=918178804274&text=I%20want%20to%20buy%20the%20full%20G2%20dataset.) to get it.
 
+Find the complete list of [185K G2 products links](https://www.omkar.cloud/downloads/g2-products-links.json) and [2,163 G2 categories links](https://www.omkar.cloud/downloads/g2-categories-links.json), ready to use.
+
 Here's a sample response for a **product details** request:
 
 ```json
