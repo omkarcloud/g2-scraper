@@ -10,6 +10,12 @@ Scrape G2 product details, reviews, ratings, pricing, and full category listings
 
 Find the complete list of [185K G2 products links](https://www.omkar.cloud/downloads/g2-products-links.json) and [2,163 G2 categories links](https://www.omkar.cloud/downloads/g2-categories-links.json), ready to use.
 
+## ▶️ Video Tutorial
+
+Watch the complete API walkthrough: 
+
+[![G2 Scraper API Walkthrough](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/g2-scraper-youtube-video-preview.png)](https://www.youtube.com/watch?v=oo7OIek2WDY)
+
 Here's a sample response for a **product details** request:
 
 ```json
