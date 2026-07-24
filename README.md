@@ -5,6 +5,7 @@ Scrape G2 product details, reviews, ratings, pricing, and full category listings
 - **Rated Excellent — 4.6 based on 21 reviews** on [Trustpilot](https://www.trustpilot.com/review/omkar.cloud). Our open source work is sponsored by [1000+ devs on GitHub](https://github.com/sponsors/omkarcloud).
 
 [![Try the G2 Scraper API in the live playground — free, no signup](https://img.shields.io/badge/%E2%96%B6%20Playground-Run%20a%20live%20request%2C%20free-brightgreen?style=for-the-badge)](https://www.omkar.cloud/tools/g2-scraper/playground?utm_source=github&utm_medium=cpc&utm_content=badge)
+
 [![Free Plan: 100 requests per month](https://img.shields.io/badge/Free%20tier-100%20requests%2Fmonth-blue?style=for-the-badge)](#pricing)
 
 [![G2 Scraper API playground — run a live request in your browser, free, no signup](https://raw.githubusercontent.com/omkarcloud/g2-scraper/master/g2-scraper-playground.png)](https://www.omkar.cloud/tools/g2-scraper/playground?utm_source=github&utm_medium=cpc&utm_content=hero-image)
