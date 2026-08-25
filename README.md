@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/omkarcloud/botasaurus/master/images/mascot.png" alt="g2 scraper" />
+  <img src="https://www.omkar.cloud/images/tools/g2/logo.png" alt="g2 scraper" />
 </p>
 <div align="center" style="margin-top: 0;">
   <h1>✨ G2 Scraper 🤖</h1>
@@ -298,6 +298,111 @@ Returns the product's website and the contacts found on it (emails, phone number
 
 ---
 
+### Reviews
+
+▶ [Try it live in the Playground →](https://www.omkar.cloud/tools/g2-scraper/playground?utm_source=github&utm_medium=cpc&utm_content=endpoint-reviews)
+
+```
+GET https://g2-scraper.omkar.cloud/g2/reviews?product=postman&page=1
+```
+
+Accepts a G2 product slug (`postman`) or full product link. Returns 10 reviews per page. Optional filters:
+
+| Parameter | Description |
+|-----------|-------------|
+| `page` | Page number (10 reviews per page). G2 caps every filter combination at 10 pages — paginate past that and we automatically combine filters behind the scenes to keep the reviews coming. |
+| `sort` | `default` (G2's relevance ordering), `most-recent`, `most-helpful`, `highest-rated`, `lowest-rated` |
+| `stars` | Filter by star rating, comma-separated — e.g. `stars=4,5` |
+| `segment` | Reviewer's company size, comma-separated: `small-business`, `mid-market`, `enterprise` |
+| `industry` | Comma-separated numeric G2 industry ids — discover each product's valid ids in `available_filters.industries` |
+| `region` | `North America`, `Europe`, `Asia`, `Latin America`, `Middle East`, `Africa`, `ANZ` (plus G2's localized tags `America Latina`, `Europa`, `Norteamerica`) |
+| `role` | Named roles (`User`, `Administrator`, `Executive Sponsor`, `Internal Consultant`, `Consultant`, `Agency`, `Industry Analyst / Tech Writer`) or numeric role ids from `available_filters.roles` |
+| `keywords` | Free-text search within review contents — e.g. `keywords=api testing` |
+
+#### Response
+
+Each page returns full review text with a question/answer breakdown, rating, reviewer details, publish date, and badges — plus the filtered review count, star distribution, and `available_filters`: the product's own filter catalog (segment/role/industry/category ids with names and counts, plus pro/con mentions) so you can discover valid filter values for any product.
+
+<details>
+<summary>Sample Response (click to expand)</summary>
+
+```json
+{
+  "count": 1800,
+  "per_page": 10,
+  "current_page": 1,
+  "total_pages": 180,
+  "next": "https://g2-scraper.omkar.cloud/g2/reviews?product=postman&page=2",
+  "previous": null,
+  "product": "postman",
+  "g2_link": "https://www.g2.com/products/postman/reviews",
+  "order": "g2_default",
+  "filters": {},
+  "star_distribution": { "1": 5, "2": 2, "3": 14, "4": 299, "5": 1480 },
+  "available_filters": {
+    "segments": [
+      { "id": 179, "name": "Small Business (50 or fewer emp.)", "count": 606 },
+      { "id": 180, "name": "Mid-Market (51-1000 emp.)", "count": 637 },
+      { "id": 181, "name": "Enterprise ( >1000 emp.)", "count": 501 }
+    ],
+    "roles": [
+      { "id": 1, "name": "User", "count": 1470 },
+      { "id": 2, "name": "Administrator", "count": 99 }
+    ],
+    "categories": [
+      { "id": 314, "name": "Software Testing", "count": 1411 },
+      { "id": 1023, "name": "API Management", "count": 1280 }
+    ],
+    "industries": [
+      { "id": 274, "name": "Computer Software", "count": 614 },
+      { "id": 313, "name": "Information Technology and Services", "count": 511 }
+    ],
+    "regions": [
+      { "id": "Asia", "name": "Asia", "count": 1181 },
+      { "id": "North America", "name": "North America", "count": 354 }
+    ],
+    "mentions": [
+      { "id": 1724232, "name": "Ease of Use", "type": "pro", "count": 460 },
+      { "id": 1729983, "name": "Slow Performance", "type": "con", "count": 222 }
+    ]
+  },
+  "reviews": [
+    {
+      "id": 13224320,
+      "link": "https://www.g2.com/products/postman/reviews/postman-review-13224320",
+      "title": "Postman Makes API Development, Testing, and Debugging Fast and Easy",
+      "content": "What do you like best about Postman?\nWhat I like best about Postman is how easy it makes API development, testing, and debugging. It lets me organize API collections, manage environments, automate test cases, and quickly validate API responses...",
+      "question_answers": [
+        {
+          "question": "What do you like best about Postman?",
+          "answer": "What I like best about Postman is how easy it makes API development, testing, and debugging..."
+        },
+        {
+          "question": "What do you dislike about Postman?",
+          "answer": "One limitation I've experienced with Postman is that managing large API collections and environments can become difficult as projects grow..."
+        }
+      ],
+      "rating": 5,
+      "reviewer": {
+        "name": "Harsh G.",
+        "job_title": "AI Engineer",
+        "industry": "Insurance",
+        "company_size": "Mid-Market (51-1000 emp.)",
+        "link": "https://www.g2.com/users/3b742ee2-c253-484a-a24d-7a91e62bc8d5"
+      },
+      "publish_date": "2026-08-07",
+      "badges": ["Current User", "Validated Reviewer"],
+      "source": "Organic",
+      "video_link": null
+    }
+  ]
+}
+```
+
+</details>
+
+---
+
 ### Products by Category
 
 ▶ [Try it live in the Playground →](https://www.omkar.cloud/tools/g2-scraper/playground?utm_source=github&utm_medium=cpc&utm_content=endpoint-categories)
@@ -310,27 +415,227 @@ Accepts a G2 category slug (`marketing-automation`) or full category link. Optio
 
 #### Response
 
+Returns 15 structured product entries per page — product id, name, link, logo, seller, rating, review count, AI-generated user-sentiment summary, solution type, AI-verified badge, and top pros/cons with mention counts — plus category metadata (name, description, total verified reviews), the category's AI-generated FAQs with last-updated date, and long-form editorial sections about the category.
+
 <details>
 <summary>Sample Response (click to expand)</summary>
 
 ```json
 {
-  "category_link": "https://www.g2.com/categories/marketing-automation",
-  "count": 408,
-  "results": [
+  "category": "marketing-automation",
+  "name": "Best Marketing Automation Software",
+  "link": "https://www.g2.com/categories/marketing-automation",
+  "description": "Top Marketing Automation Software. Choose the right Marketing Automation Software using real-time, up-to-date product reviews from 90010 verified user reviews.",
+  "total_reviews": 90010,
+  "page": 1,
+  "last_page": 35,
+  "order": "g2_score",
+  "products_count": 15,
+  "products": [
+    {
+      "id": 364,
+      "name": "HubSpot Marketing Hub",
+      "link": "https://www.g2.com/products/hubspot-marketing-hub/reviews",
+      "logo": "https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_74390118cdf58a60fb81adaaefdb6287/hubspot-marketing-hub.png",
+      "seller": { "name": "HubSpot", "link": "https://www.g2.com/sellers/hubspot" },
+      "rating": 4.4,
+      "reviews_count": 14921,
+      "users_say": "Users consistently praise the ease of use and centralized management of HubSpot Marketing Hub, highlighting its ability to streamline marketing tasks and provide a comprehensive view of campaigns...",
+      "solution_type": "All-in-One",
+      "is_ai_verified": true,
+      "pros": [{ "name": "Ease of Use", "mentions": 1981 }],
+      "cons": [{ "name": "Learning Curve", "mentions": 808 }]
+    },
+    {
+      "id": 1934,
+      "name": "ActiveCampaign",
+      "link": "https://www.g2.com/products/activecampaign/reviews",
+      "logo": "https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_50828ef2b93af30b29edd9061533c3b9/activecampaign.jpg",
+      "seller": { "name": "ActiveCampaign", "link": "https://www.g2.com/sellers/activecampaign" },
+      "rating": 4.4,
+      "reviews_count": 14780,
+      "users_say": "Users consistently praise the ease of use and powerful automation features of ActiveCampaign, highlighting how intuitive the platform is for managing email campaigns and customer relationships...",
+      "solution_type": "All-in-One",
+      "is_ai_verified": true,
+      "pros": [{ "name": "Ease of Use", "mentions": 848 }],
+      "cons": [{ "name": "Learning Curve", "mentions": 419 }]
+    }
+  ],
+  "faqs": {
+    "last_updated": "2026-06-15",
+    "items": [
+      {
+        "question": "Which marketing automation software maintains data sync integrity with leading CRM platforms across your organization",
+        "answer": "Based on G2 reviews, several products are repeatedly mentioned for CRM-connected workflows and cleaner cross-team visibility. HubSpot Marketing Hub — unified CRM and campaign visibility..."
+      }
+    ]
+  },
+  "learn_more": [
+    {
+      "title": "What is Marketing Automation Software?",
+      "content": "Marketing automation software allows companies to optimize their marketing strategy by automating marketing tasks such as email marketing, social media posts, and lead generation..."
+    }
+  ],
+  "next": "https://g2-scraper.omkar.cloud/g2/categories?category=marketing-automation&page=2",
+  "previous": null
+}
+```
+
+</details>
+
+---
+
+### Seller Profile
+
+Get a G2 seller (vendor) profile — aggregate stats, company info, and the full product portfolio in one call.
+
+▶ [Try it live in the Playground →](https://www.omkar.cloud/tools/g2-scraper/playground?utm_source=github&utm_medium=cpc&utm_content=endpoint-sellers)
+
+```
+GET https://g2-scraper.omkar.cloud/g2/sellers?seller=hubspot
+```
+
+Accepts a G2 seller slug (`hubspot`) or full seller link. The products list and the reviews list paginate independently: `products_page` (9 products per page — large sellers like Google span 40+ pages) and `reviews_page` (3 review teasers per page, capped by G2 at 10 pages).
+
+#### Response
+
+Returns the seller's hero stats (aggregate rating, star-percentage breakdown, total reviews, number of profiles and categories, leader badge, serving-customers-since year), about block (description, HQ location, year founded, website, social links), featured products, the product portfolio, and cross-product review teasers with links to the full reviews.
+
+<details>
+<summary>Sample Response (click to expand)</summary>
+
+```json
+{
+  "seller": "hubspot",
+  "name": "HubSpot",
+  "link": "https://www.g2.com/sellers/hubspot",
+  "logo": "https://images.g2crowd.com/uploads/vendor/image/316/63ad29dc585e90022b87376175848478.jpeg",
+  "description": "HubSpot is a leading agentic customer platform that provides software and support to help businesses grow better...",
+  "rating": 4.4,
+  "star_percentages": { "1": 0, "2": 0, "3": 3, "4": 26, "5": 68 },
+  "total_reviews": 35884,
+  "profiles": 12,
+  "categories_count": 63,
+  "leader_badge": "#1 in 61 categories — Grid® leader",
+  "serving_customers_since": 2006,
+  "hq_location": "Cambridge, Massachusetts, United States",
+  "year_founded": 2006,
+  "website": "https://hubspot.com",
+  "social_links": {
+    "linkedin": "https://www.linkedin.com/company/68529/",
+    "twitter": "https://twitter.com/HubSpot"
+  },
+  "categories": [
+    { "name": "CRM Software", "link": "https://www.g2.com/categories/crm" },
+    { "name": "Marketing Automation Software", "link": "https://www.g2.com/categories/marketing-automation" }
+  ],
+  "featured_products": [
     {
       "name": "HubSpot Marketing Hub",
       "link": "https://www.g2.com/products/hubspot-marketing-hub/reviews",
-      "users": ["Marketing Manager", "Marketing Coordinator"],
-      "industries": ["Computer Software", "Marketing and Advertising"],
-      "market_segments": ["54% Small-Business", "40% Mid-Market"]
+      "reviews_count": 14921,
+      "description": "Marketing automation software to help you attract the right audience, convert more visitors into customers..."
+    }
+  ],
+  "products": [
+    {
+      "id": 364,
+      "name": "HubSpot Marketing Hub",
+      "link": "https://www.g2.com/products/hubspot-marketing-hub/reviews",
+      "logo": "https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_74390118cdf58a60fb81adaaefdb6287/hubspot-marketing-hub.png",
+      "medal": "https://images.g2crowd.com/uploads/medal/image/1000602/5f02e1e85438880920c9f4c66d005c33.svg",
+      "rating": 4.5,
+      "reviews_count": 14921,
+      "description": "Marketing automation software to help you attract the right audience, convert more visitors into customers, and run complete inbound marketing campaigns at scale."
+    }
+  ],
+  "products_page": 1,
+  "products_last_page": 2,
+  "products_page_next": "https://g2-scraper.omkar.cloud/g2/sellers?seller=hubspot&products_page=2",
+  "reviews": [
+    {
+      "title": "HubSpot Helps Me Contribute More Thoroughly, Worry-Free",
+      "link": "https://www.g2.com/products/hubspot-sales-hub/reviews/hubspot-sales-hub-review-13277564",
+      "snippet": "HubSpot helps me contribute to the team more thoroughly, without having to worry about any problems at all.",
+      "rating": 5,
+      "product": { "name": "HubSpot Sales Hub", "link": "https://www.g2.com/products/hubspot-sales-hub/reviews" },
+      "reviewer": { "name": "Verified User in Staffing and Recruiting", "job_title": null },
+      "publish_date": "2026-08-15",
+      "badges": ["Validated Reviewer"],
+      "source": "Organic"
+    }
+  ],
+  "reviews_page": 1,
+  "reviews_last_page": 10,
+  "reviews_page_next": "https://g2-scraper.omkar.cloud/g2/sellers?seller=hubspot&reviews_page=2"
+}
+```
+
+</details>
+
+---
+
+### Seller Products
+
+Get one page of a seller's **All Products & Services** portfolio — the lighter counterpart to the full seller profile when only the product list is needed.
+
+▶ [Try it live in the Playground →](https://www.omkar.cloud/tools/g2-scraper/playground?utm_source=github&utm_medium=cpc&utm_content=endpoint-seller-products)
+
+```
+GET https://g2-scraper.omkar.cloud/g2/sellers/products?seller=google
+```
+
+Accepts a G2 seller slug (`google`) or full seller link. Optional `page` (9 products per page).
+
+#### Response
+
+Each entry includes the product id, name, link, logo, medal image, star rating, review count, and description. Page 1 also includes the seller's featured-products carousel; later pages omit it so paginating callers collect no duplicates.
+
+<details>
+<summary>Sample Response (click to expand)</summary>
+
+```json
+{
+  "count": 369,
+  "per_page": 9,
+  "current_page": 1,
+  "total_pages": 41,
+  "next": "https://g2-scraper.omkar.cloud/g2/sellers/products?seller=google&page=2",
+  "previous": null,
+  "seller": "google",
+  "name": "Google",
+  "link": "https://www.g2.com/sellers/google",
+  "logo": "https://images.g2crowd.com/uploads/vendor/image/311/da820dfb0bceb23ead050c282acb6770.jpeg",
+  "rating": 4.5,
+  "total_reviews": 85651,
+  "featured_products": [
+    {
+      "name": "Google Analytics",
+      "link": "https://www.g2.com/products/google-analytics/reviews",
+      "reviews_count": 6862,
+      "description": "Google Analytics not only lets you measure sales and conversions, but also gives you fresh insights into how visitors use your site..."
+    }
+  ],
+  "products": [
+    {
+      "id": 1434,
+      "name": "Google Workspace",
+      "link": "https://www.g2.com/products/google-workspace/reviews",
+      "logo": "https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_4a9a6d57cdd833bf0381d21fd9246641/google-workspace.png",
+      "medal": null,
+      "rating": 4.5,
+      "reviews_count": 48172,
+      "description": "Google Workspace enables teams of all sizes to connect, create and collaborate..."
     },
     {
-      "name": "Insider",
-      "link": "https://www.g2.com/products/insider/reviews",
-      "users": ["Digital Marketing Manager", "Digital Marketing Specialist"],
-      "industries": ["Retail", "Apparel & Fashion"],
-      "market_segments": ["45% Mid-Market", "29% Small-Business"]
+      "id": 356,
+      "name": "Google Analytics",
+      "link": "https://www.g2.com/products/google-analytics/reviews",
+      "logo": "https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_db11aab8ccb63f5742949ab9955e36bf/google-analytics.png",
+      "medal": null,
+      "rating": 4.5,
+      "reviews_count": 6862,
+      "description": "Google Analytics not only lets you measure sales and conversions, but also gives you fresh insights into how visitors use your site, how they arrived on your site, and how you can keep them coming back."
     }
   ]
 }
@@ -468,11 +773,17 @@ G2 itself stops serving reviews after page 10. When you paginate past that, we a
 - Social profiles — Twitter, LinkedIn, follower counts
 - Categories
 
+**Reviews** returns 10 reviews per page — full text with a question/answer breakdown, rating, reviewer name, job title, industry, company size, publish date, and badges — plus the filtered review count, star distribution, and the product's own filter catalog (`available_filters`).
+
 **Products by Category** returns per product:
-- Product name and G2 link
-- Common user job titles
-- Top industries
-- Market segment split (Small-Business, Mid-Market, Enterprise)
+- Product name, logo, G2 link, and seller
+- Rating and review count
+- AI-generated user-sentiment summary and AI-verified badge
+- Solution type and top pros/cons with mention counts
+
+plus category metadata, AI-generated category FAQs, and long-form editorial sections about the category.
+
+**Seller Profile** returns a vendor's full G2 profile — aggregate rating with star-percentage breakdown, total reviews, leader badge, HQ location, founded year, website and social links, featured products, the product portfolio, and cross-product review teasers. **Seller Products** returns just the paginated product portfolio when that's all you need.
 
 **Category Links** and **Product Links** return the full directory of category and product URLs, with a total count.
 
