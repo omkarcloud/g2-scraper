@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.omkar.cloud/images/tools/g2/logo.png" alt="g2 scraper" />
+  <img src="https://raw.githubusercontent.com/omkarcloud/botasaurus/master/images/mascot.png" alt="g2 scraper" />
 </p>
 <div align="center" style="margin-top: 0;">
   <h1>✨ G2 Scraper 🤖</h1>
