@@ -721,9 +721,9 @@ Free Plan Available — [create your API key →](https://www.omkar.cloud/auth/s
 
 ## G2 Dataset Downloads
 
-Free to download, no signup: [240,975 G2 product links (4.8MB)](https://www.omkar.cloud/downloads/g2-products-links.json) · [2,227 G2 category links (128KB)](https://www.omkar.cloud/downloads/g2-categories-links.json)
+Free to download, no signup: [290,176 G2 product links (4.8MB)](https://www.omkar.cloud/downloads/g2-products-links.json) · [2,227 G2 category links (128KB)](https://www.omkar.cloud/downloads/g2-categories-links.json)
 
-The API serves pre-crawled data that may be a few months old — fine for competitive research, lead generation, and market analysis. If you need the newest reviews across all 240,975 products, the full refreshed dataset is available for purchase: [WhatsApp us](https://api.whatsapp.com/send?phone=918178804274&text=I%20want%20to%20buy%20the%20full%20G2%20dataset.) or [email us](mailto:happy.to.help@omkar.cloud?subject=Full%20G2%20Dataset).
+The API serves pre-crawled data that may be a few months old — fine for competitive research, lead generation, and market analysis. If you need the newest reviews across all 290,176 products, the full refreshed dataset is available for purchase: [WhatsApp us](https://api.whatsapp.com/send?phone=918178804274&text=I%20want%20to%20buy%20the%20full%20G2%20dataset.) or [email us](mailto:happy.to.help@omkar.cloud?subject=Full%20G2%20Dataset).
 
 ## FAQs
 
@@ -743,9 +743,9 @@ Reviews come 10 per page. G2 itself caps every filter combination at 10 pages �
 
 ### How do I discover products and categories to scrape?
 
-Use the **Product Links** and **Category Links** endpoints. They return the complete directory — 240,975 products and 2,227 categories — so you can crawl G2 end to end without guessing URLs.
+Use the **Product Links** and **Category Links** endpoints. They return the complete directory — 290,176 products and 2,227 categories — so you can crawl G2 end to end without guessing URLs.
 
-Prefer files? Download the full directories directly, free: [240,975 G2 product links (4.8MB)](https://www.omkar.cloud/downloads/g2-products-links.json) · [2,227 G2 category links (128KB)](https://www.omkar.cloud/downloads/g2-categories-links.json)
+Prefer files? Download the full directories directly, free: [290,176 G2 product links (4.8MB)](https://www.omkar.cloud/downloads/g2-products-links.json) · [2,227 G2 category links (128KB)](https://www.omkar.cloud/downloads/g2-categories-links.json)
 
 ### How do I scrape G2 reviews?
 
