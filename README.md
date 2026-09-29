@@ -102,7 +102,6 @@ GET https://g2-scraper.omkar.cloud/g2/products?product=postman
   "company_location": "San Francisco, CA",
   "company_founded_year": 2014,
   "company_website": "https://www.postman.com",
-  "number_of_employees_on_linkedin": 2305,
   "pricing_plans": [
     {
       "plan_name": "Free Plan",
@@ -253,7 +252,6 @@ Returns the product's website and the contacts found on it (emails, phone number
   "twitter": "https://twitter.com/getpostman",
   "number_of_followers_on_twitter": 51725,
   "linkedin": "https://www.linkedin.com/company/3795851/",
-  "number_of_employees_on_linkedin": 2305,
   "company_website": "https://www.postman.com",
   "is_claimed": true,
   "categories": [
